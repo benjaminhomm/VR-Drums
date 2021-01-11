@@ -13,15 +13,20 @@ public class GenerateSound : MonoBehaviour
 
     void Start()
     {
+        // Initialized
         drumBeat = GetComponent<AudioSource> ();
         interactable = GetComponent<Interactable>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        // Plays the given Sound once
         drumBeat.PlayOneShot(drumBeat.clip);
+
+        // Plays the definded Particle System
         Particle.GetComponent<ParticleSystem>().Play();
 
+        // Triggers the vibration in Controller as a haptic feedback (not tested)
         if (interactable.attachedToHand)
         {
             hand = interactable.attachedToHand.handType;
