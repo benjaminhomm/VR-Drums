@@ -8,18 +8,24 @@ public class ChooseScene : MonoBehaviour
     // Load Space Scene
     public void StartSpace()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(loadScene(1));
     }
 
     // Load Nature Scene
     public void StartNature()
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(loadScene(2));
     }
 
     // Load Concert Scene
     public void StartConcert()
     {
-        SceneManager.LoadScene(3);
+        StartCoroutine(loadScene(3));
+    }
+
+    // Load the Scene with the given parameter
+    IEnumerator loadScene(int scene) {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(scene);
     }
 }
